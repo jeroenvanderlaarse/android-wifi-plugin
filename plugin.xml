@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="android-wifi" version="0.0.1">
+  <name>Android Wifi</name>
+  <description>Android wifi connection plugin</description>
+  <author>Jeroen van der Laarse</author>
+  <license>MIT</license>
+  <keywords>wifi,connection,ionic,ecosystem:cordova,cordova-android,cordova-ios</keywords>
+
+  <js-module name="AndroidWifi" src="www/AndroidWifi.js">
+    <clobbers target="cordova.plugins.AndroidWifi" />
+  </js-module>
+
+  // the minimum cordova version which supports this plugin
+    <engines>
+        <engine name="cordova" version=">=3.6.0"></engine>
+    </engines>
+
+  <!-- android -->
+  <platform name="android">
+    <source-file src="src/android/AndroidWifi.java"
+                 target-dir="src/">
+    </source-file>
+
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="AndroidWifi">
+        <param name="android-package" value="android-wifi.AndroidWifi" />
+      </feature>
+    </config-file>
+
+    <config-file target="AndroidManifest.xml" parent="/*">
+      <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+      <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+      <uses-permission android:name="android.permission.INTERNET" />
+      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+      <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+      <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    </config-file>
+  </platform>
+
+</plugin>
